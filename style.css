@@ -1,0 +1,144 @@
+@font-face {
+  font-family: "NeoDgm";
+  src: url("font/neodgm.ttf") format("truetype");
+}
+
+body {
+  font-family: "NeoDgm", sans-serif;
+  margin: 0px;
+}
+
+header {
+  background-color: #ebe3e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 10px;
+  height: 130px;
+}
+
+.logo-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.logo {
+  width: 384px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.overlay-text {
+  position: absolute; /* header 내에서 절대 위치 */
+  top: 92px; /* 로고의 상단에서부터의 거리, 필요에 따라 조정 */
+  left: 85px; /* 로고의 왼쪽에서부터의 거리, 필요에 따라 조정 */
+  color: #e0d7ad; /* 텍스트 색상, 배경에 따라 조정 */
+  font-size: 14px; /* 텍스트 크기, 필요에 따라 조정 */
+  /* text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black; */
+  text-shadow: -2px -2px 0 #372d02, 2px -2px 0 #372d02, -2px 2px 0 #372d02,
+    2px 2px 0 #372d02, /* 기본적인 테두리를 만듭니다 */ -1px -2px 0 #372d02,
+    1px -2px 0 #372d02, -2px -1px 0 #372d02, 2px -1px 0 #372d02,
+    -2px 1px 0 #372d02, 2px 1px 0 #372d02, -1px 2px 0 #372d02, 1px 2px 0 #372d02; /* 추가적인 테두리를 더 굵게 만듭니다 */
+}
+
+.stage-info,
+.round-info {
+  position: absolute;
+  font-size: 72px;
+  color: #e0d7ad; /* 텍스트 색상, 배경에 따라 조정 */
+  text-shadow: -4px -4px 0 #372d02, 4px -4px 0 #372d02, -4px 4px 0 #372d02,
+    4px 4px 0 #372d02; /* 기본적인 테두리를 만듭니다*/
+}
+
+.stage-info {
+  left: calc(50% - 50px); /* 정중앙에서 좌측으로 10px */
+  transform: translateX(-100%);
+}
+
+.round-info {
+  left: calc(50% + 50px); /* 정중앙에서 우측으로 10px */
+}
+
+main {
+  background-image: url("image/background.png");
+  background-size: cover; /* 이미지가 화면을 꽉 채우도록 조정 */
+  background-position: center; /* 이미지 중앙 정렬 */
+  background-repeat: no-repeat; /* 이미지 반복 없음 */
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column; /* 아이템들을 세로 방향으로 나열 */
+  align-items: center; /* 가로 방향으로 중앙 정렬 */
+  justify-content: center; /* 세로 방향으로 중앙 정렬 */
+  height: 85vh; /* 뷰포트 높이에 맞춤 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.background {
+  z-index: 0;
+  width: 100%;
+}
+
+.participant {
+  display: flex;
+  flex-direction: column; /* 자식 요소를 세로로 정렬 */
+  align-items: center; /* 센터 정렬로 이미지와 이름을 중앙에 위치시킴 */
+  cursor: pointer;
+  text-align: center;
+  gap: 10px; /* 이미지와 이름 사이의 간격 조정 */
+}
+
+.participant img {
+  width: 400px; /*  이미지 크기, 필요에 따라 조정 */
+}
+
+.participant span {
+  font-size: 44px; /* 이름 폰트 사이즈, 필요에 따라 조정 */
+}
+
+/* 선택된 참가자 애니메이션 효과 */
+.selected-participant {
+  animation: moveToCenter 0.5s forwards;
+}
+
+@keyframes moveToCenter {
+  to {
+    transform: translateX(calc(50%-200px)); /* 예시 값, 조정 필요 */
+  }
+}
+
+.winner {
+  text-align: center;
+}
+
+.winner img {
+  width: 400px;
+}
+
+.winner span {
+  font-size: 44px;
+}
+
+.matchup-container {
+  display: flex;
+  justify-content: center;
+}
+
+.participant {
+  flex: 1; /* Flex 아이템들이 공간을 균등하게 차지하도록 설정 */
+  cursor: pointer;
+  text-align: center;
+}
+
+/* 좌우 대진표를 위한 추가 스타일 */
+.matchup {
+  display: flex;
+  justify-content: center; /* 대진 내의 참가자를 양 끝으로 배치 */
+  gap: 80%;
+  width: 100%; /* 필요에 따라 조정 */
+  max-width: 600px; /* 최대 너비 설정, 필요에 따라 조정 */
+  margin: auto; /* 중앙 정렬 */
+}
